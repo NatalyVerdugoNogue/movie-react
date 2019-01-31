@@ -6,8 +6,8 @@ import './style.css';
 
 import { Row, Col, Preloader } from 'react-materialize'
 
-const urlPopularity = 'https://api.themoviedb.org/3/discover/movie?api_key=bdf4d6ef2e610465506b8a14ec2b87ac&language=es-CL&sort_by=popularity.desc&include_adult=false&include_video=false&page=1';
-const urlRelaseDate = 'https://api.themoviedb.org/3/discover/movie?api_key=bdf4d6ef2e610465506b8a14ec2b87ac&language=es-CL&sort_by=primary_release_date.desc&include_adult=false&include_video=false&page=1'
+const urlPopularity = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&language=es-CL&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
+const urlRelaseDate = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.API_KEY}&language=es-CL&sort_by=primary_release_date.desc&include_adult=false&include_video=false&page=1`;
 
 class Home extends Component {
 
@@ -49,9 +49,6 @@ class Home extends Component {
   render() {
     const { moviePopularity, loadingPopularity, errorPopularity } = this.state;
     const { movieRelaseDate, loadingRelaseDate, errorRelaseDate } = this.state;
-    console.log(moviePopularity);
-    console.log(movieRelaseDate);
-
 
     return (
 
@@ -86,9 +83,6 @@ class Home extends Component {
               {!loadingRelaseDate && !errorRelaseDate && !movieRelaseDate.length && <h2 className='font-card-warning'>No hay información disponible</h2>}
               {!loadingRelaseDate && errorRelaseDate && <h2 className='font-card-warning'>Ocurrio un error</h2>}
             </Row>
-
-
-
 
           </Col>
 

@@ -19,7 +19,6 @@ code {
   box-shadow: none;
 }
 
-.card .card-content {
-  padding: 10px
+.card-movie {
+  padding: 5px;
 }
-

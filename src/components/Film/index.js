@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { Card, CardTitle, Col } from 'react-materialize'
 
@@ -8,10 +9,14 @@ const Film = ({ film }) => (
 
     <div className="film card-movie">
 
-      <Card className='small font-card back-card'
-        header={<CardTitle image={"https://image.tmdb.org/t/p/w500" + film.poster_path}></CardTitle>}>
-        <h6 className="">{film.title}</h6>
-      </Card>
+      <Link to={`/film/${film.id}`}>
+        <Card className='small font-card back-card' key={film.id}
+          header={<CardTitle image={"https://image.tmdb.org/t/p/w500" + film.poster_path}></CardTitle>}>
+          <h6 className="font-card">
+            {film.title}
+          </h6>
+        </Card>
+      </Link>
 
     </div>
 
