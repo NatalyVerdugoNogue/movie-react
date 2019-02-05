@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 
-import { Row, Col, Preloader, Button, Icon } from 'react-materialize'
+import { Row, Col, Preloader} from 'react-materialize'
 
 import Film from '../../components/Film';
-import Categories from '../../components/Categories';
-import Ranking from '../../components/Ranking';
-
-import { Link } from 'react-router-dom';
+import SideNavCom from '../../components/SideNavCom';
 
 class VoteAverage extends Component {
   constructor(props) {
@@ -80,16 +77,7 @@ class VoteAverage extends Component {
       <div className="dataFilm">
         <Row>
           <Col l={3} className='grid-menu'>
-
-            <Link to={`/`}>
-              <Button waves='light'>Home<Icon left>cloud</Icon></Button>
-            </Link>
-            <Categories />
-            <Ranking />
-            <Link to={`/favorites`}>
-              <h4 className='font-card'>Favoritas</h4>
-            </Link>
-
+          <SideNavCom />
           </Col>
 
           <Col l={9} className='grid-all-movie'>

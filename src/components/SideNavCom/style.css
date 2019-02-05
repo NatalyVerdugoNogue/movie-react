@@ -1,0 +1,81 @@
+.btn {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.btn:hover {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.side-nav {
+  background-color: #0e151ca4
+}
+
+.side-nav a {
+  padding: 0;
+  height: 100%;
+}
+
+.fotter {
+  position: fixed;
+  bottom: 8%;
+  left: 56%;
+}
+
+.side-favorites {
+  color: #fff;
+  font-size: 15px;
+  padding-left: 30px
+}
+
+.side-ranking {
+  color: #fff;
+  font-size: 15px;
+  padding-left: 18.75px
+}
+
+.input-field label {
+  position: inherit
+}
+
+.input-field {
+  margin-top: 0;
+}
+
+.desde-hasta-ranking {
+  padding: 0 10px;
+  color: #fff;
+}
+
+.filtrar-ranking {
+  border: #fff 1px solid;
+}
+
+.border-filtrar-ranking {
+  padding: 0 30% !important;
+}
+
+.fond-fav {
+  color: #fff;
+  margin: 0
+}
+
+.i-side {
+  color: #fff;
+  padding: 10px 50px;
+}
+
+.select-wrapper span.caret {
+  color: #fff
+}
+
+.dropdown-content li>a, .dropdown-content li>span {
+  color: #fff;
+  background-color: #0e151cde;
+}
+
+.dropdown-button {
+  width: 100%;
+  text-align: left
+}

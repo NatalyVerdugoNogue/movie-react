@@ -42,25 +42,25 @@ class Ranking extends Component {
       <Row>
         <form onSubmit={this.handleSubmit} >
 
-          <Col l={12} >
-            <p>Rating</p>
+          <Col l={12}  >
+            <p className="side-ranking">RANKING</p>
           </Col>
 
           <Col l={6} >
-            <Input l={12} type='select' label="Desde" defaultValue='1' value={this.state.valueGte} onChange={this.handleChangeGte}>
+            <Input className="desde-hasta-ranking" l={12} type='select' label="Desde" defaultValue='1' value={this.state.valueGte} onChange={this.handleChangeGte}>
               {score.map(score => <option value={score}>{score}</option>)}
             </Input>
           </Col>
 
           <Col l={6} >
-            <Input l={12} type='select' label="Hasta" defaultValue='10' value={this.state.valueLte} onChange={this.handleChangeLte}>
+            <Input className="desde-hasta-ranking" l={12} type='select' label="Hasta" defaultValue='10' value={this.state.valueLte} onChange={this.handleChangeLte}>
               {score.map(score => <option value={score}>{score}</option>)}
             </Input>
           </Col>
 
-          <Col l={12} >
+          <Col l={12} className="border-filtrar-ranking" >
             <Link to={`/ranking/${this.state.valueGte}/${this.state.valueLte}`}>
-              <Button type='submit' waves='light' >Filtrar</Button>
+              <Button type='submit'className="filtrar-ranking">Filtrar</Button>
             </Link>
           </Col>
 

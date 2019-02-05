@@ -11,6 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
+
+
 .card.small .card-image {
   max-height: 100%
 }
@@ -22,3 +24,4 @@ code {
 .card-movie {
   padding: 5px;
 }
+

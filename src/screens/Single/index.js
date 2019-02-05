@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 
 import DataFilm from '../../components/DataFilm';
-import Categories from '../../components/Categories';
-import Ranking from '../../components/Ranking';
+import SideNavCom from '../../components/SideNavCom';
 
-import { Row, Col, Preloader, Button, Icon } from 'react-materialize'
-
-import { Link } from 'react-router-dom';
+import { Row, Col, Preloader } from 'react-materialize'
 
 
 class Single extends Component {
@@ -46,16 +43,7 @@ class Single extends Component {
 
       <Row>
         <Col l={3} className='grid-menu'>
-
-          <Link to={`/`}>
-            <Button waves='light'>Home<Icon left>cloud</Icon></Button>
-          </Link>
-          <Categories />
-          <Ranking />
-          <Link to={`/favorites`}>
-            <h4 className='font-card'>Favoritas</h4>
-          </Link>
-
+          <SideNavCom />
         </Col>
 
         <Col l={9} className='grid-all-movie'>

@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
-import { Row, Col, Preloader, Button, Icon } from 'react-materialize'
+import { Row, Col } from 'react-materialize'
 
 import Favorite from '../../components/Favorite';
-import Categories from '../../components/Categories';
-import Ranking from '../../components/Ranking';
+import SideNavCom from '../../components/SideNavCom';
 
-import { Link } from 'react-router-dom';
 class AllFavorite extends Component {
   constructor(props) {
     super(props);
@@ -34,11 +32,7 @@ class AllFavorite extends Component {
       <div className="dataFilm">
         <Row>
           <Col l={3} className='grid-menu'>
-            <Link to={`/`}>
-              <Button waves='light'>Home<Icon left>cloud</Icon></Button>
-            </Link>
-            <Categories />
-            <Ranking />
+            <SideNavCom />
           </Col>
           <Col l={9} className='grid-all-movie'>
             <Row>
