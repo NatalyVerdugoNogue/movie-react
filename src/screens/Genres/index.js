@@ -17,7 +17,16 @@ class Genres extends Component {
       loadingGenresId: false,
       movieGenresId: [],
       errorGenresId: false,
+      favoriteFilms: [],
     };
+
+  }
+
+  saveFavoriteFilms = (film) => {
+
+    this.state.favoriteFilms.push(film)
+    this.setState(this.state.favoriteFilms);
+    localStorage.setItem("MovieReact-favoriteFilms", JSON.stringify(this.state.favoriteFilms))
 
   }
 
@@ -42,6 +51,11 @@ class Genres extends Component {
 
   componentDidMount() {
 
+    const favoriteFilms = localStorage.getItem("MovieReact-favoriteFilms");
+    if (favoriteFilms) {
+      this.setState({ favoriteFilms: JSON.parse(favoriteFilms) });
+    }
+
     this.getMovieByGender();
 
   }
@@ -64,16 +78,21 @@ class Genres extends Component {
       <div className="dataFilm">
         <Row>
           <Col l={3} className='grid-menu'>
+
             <Link to={`/`}>
               <Button waves='light'>Home<Icon left>cloud</Icon></Button>
             </Link>
             <Categories />
             <Ranking />
+            <Link to={`/favorites`}>
+              <h4 className='font-card'>Favoritas</h4>
+            </Link>
+
           </Col>
           <Col l={9} className='grid-all-movie'>
             <Row>
               <h4 className='font-card'>{this.nameGenres}</h4>
-              {!loadingGenresId && movieGenresId.map(film => <Film film={film} />)}
+              {!loadingGenresId && movieGenresId.map(film => <Film film={film} saveFavoriteFilms={this.saveFavoriteFilms} />)}
               {loadingGenresId &&
                 <Col l={4}>
                   <Preloader flashing />

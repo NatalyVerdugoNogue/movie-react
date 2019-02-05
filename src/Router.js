@@ -5,6 +5,7 @@ import Home from './screens/Home';
 import Single from './screens/Single';
 import Genres from './screens/Genres';
 import VoteAverage from './screens/VoteAverage';
+import AllFavorite from './screens/AllFavorite';
 
 const Router = () => (
   <BrowserRouter>
@@ -29,6 +30,11 @@ const Router = () => (
           exact
           path="/ranking/:valueGte/:valueLte"
           component={VoteAverage}
+        />
+        <Route
+          exact
+          path="/favorites"
+          component={AllFavorite}
         />
       </Switch>
     </div>

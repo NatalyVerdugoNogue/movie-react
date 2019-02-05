@@ -17,7 +17,16 @@ class VoteAverage extends Component {
       loadingValue: false,
       movieValue: [],
       errorValue: false,
+      favoriteFilms: [],
     };
+
+  }
+
+  saveFavoriteFilms = (film) => {
+
+    this.state.favoriteFilms.push(film)
+    this.setState(this.state.favoriteFilms);
+    localStorage.setItem("MovieReact-favoriteFilms", JSON.stringify(this.state.favoriteFilms))
 
   }
 
@@ -43,6 +52,11 @@ class VoteAverage extends Component {
 
   componentDidMount() {
 
+    const favoriteFilms = localStorage.getItem("MovieReact-favoriteFilms");
+    if (favoriteFilms) {
+      this.setState({ favoriteFilms: JSON.parse(favoriteFilms) });
+    }
+
     this.getMovieByVoteAverage();
 
   }
@@ -66,16 +80,22 @@ class VoteAverage extends Component {
       <div className="dataFilm">
         <Row>
           <Col l={3} className='grid-menu'>
+
             <Link to={`/`}>
               <Button waves='light'>Home<Icon left>cloud</Icon></Button>
             </Link>
             <Categories />
             <Ranking />
+            <Link to={`/favorites`}>
+              <h4 className='font-card'>Favoritas</h4>
+            </Link>
+
           </Col>
+
           <Col l={9} className='grid-all-movie'>
             <Row>
               <h4 className='font-card'>{this.valueGte}-{this.valueLte}</h4>
-              {!loadingValue && movieValue.map(film => <Film film={film} />)}
+              {!loadingValue && movieValue.map(film => <Film film={film} saveFavoriteFilms={this.saveFavoriteFilms} />)}
               {loadingValue &&
                 <Col l={4}>
                   <Preloader flashing />
@@ -85,6 +105,7 @@ class VoteAverage extends Component {
               {!loadingValue && errorValue && <h2 className='font-card-warning'>Ocurrio un error</h2>}
             </Row>
           </Col>
+          
         </Row>
       </div>
 

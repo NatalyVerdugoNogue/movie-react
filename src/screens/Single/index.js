@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
 
 import DataFilm from '../../components/DataFilm';
+import Categories from '../../components/Categories';
+import Ranking from '../../components/Ranking';
 
-import { Row, Col, Preloader } from 'react-materialize'
+import { Row, Col, Preloader, Button, Icon } from 'react-materialize'
+
+import { Link } from 'react-router-dom';
 
 
 class Single extends Component {
@@ -39,14 +43,34 @@ class Single extends Component {
 
     const { movieById, loadingById, errorById } = this.state;
     return (<div className="dataFilm">
+
       <Row>
-        {!loadingById && <DataFilm dataFilm={movieById} />}
-        {loadingById &&
-          <Col l={4}>
-            <Preloader flashing />
-          </Col>
-        }
-        {!loadingById && errorById && <h2 className='font-card-warning'>Ocurrio un error</h2>}
+        <Col l={3} className='grid-menu'>
+
+          <Link to={`/`}>
+            <Button waves='light'>Home<Icon left>cloud</Icon></Button>
+          </Link>
+          <Categories />
+          <Ranking />
+          <Link to={`/favorites`}>
+            <h4 className='font-card'>Favoritas</h4>
+          </Link>
+
+        </Col>
+
+        <Col l={9} className='grid-all-movie'>
+          <Row>
+            {!loadingById && <DataFilm dataFilm={movieById} />}
+            {loadingById &&
+              <Col l={4}>
+                <Preloader flashing />
+              </Col>
+            }
+            {!loadingById && errorById && <h2 className='font-card-warning'>Ocurrio un error</h2>}
+          </Row>
+
+        </Col>
+
       </Row>
 
     </div>

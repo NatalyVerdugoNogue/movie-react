@@ -5,6 +5,8 @@ import Favorite from '../../components/Favorite';
 import Categories from '../../components/Categories';
 import Ranking from '../../components/Ranking';
 
+import { Link } from 'react-router-dom';
+
 import './style.css';
 
 
@@ -77,8 +79,13 @@ class Home extends Component {
 
         <Row>
           <Col l={3} className='grid-menu'>
+
             <Categories />
             <Ranking />
+            <Link to={`/favorites`}>
+              <h4 className='font-card'>Favoritas</h4>
+            </Link>
+
           </Col>
 
           <Col l={9} className='grid-all-movie'>
@@ -109,7 +116,7 @@ class Home extends Component {
 
             <Row>
               <h4 className='font-card'>Favoritas</h4>
-              {favoriteFilms.map(fav => <Favorite fav={fav} saveFavoriteFilms={this.saveFavoriteFilms} />)}
+              {favoriteFilms.slice(0, 6).map(fav => <Favorite fav={fav} />)}
               {loadingRelaseDate &&
                 <Col l={4}>
                   <Preloader flashing />
