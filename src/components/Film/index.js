@@ -18,6 +18,9 @@ const Film = ({ film, saveFavoriteFilms }) => (
           <h6 className="font-card">
             {film.title}
           </h6>
+          <h6 className="font-card">
+            {film.vote_average}
+          </h6>
         </Card>
 
       </Link>

@@ -4,7 +4,7 @@ import notfound from '../../img/notfound.png'
 
 import { Card, CardTitle, Col } from 'react-materialize'
 
-const Favorite = ({ fav, saveFavoriteFilms }) => (
+const Favorite = ({ fav }) => (
 
 
   <Col l={2} className='grid-card-movie'>

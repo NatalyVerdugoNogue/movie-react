@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Film from '../../components/Film';
 import Favorite from '../../components/Favorite';
 import Categories from '../../components/Categories';
+import Ranking from '../../components/Ranking';
 
 import './style.css';
 
@@ -77,6 +78,7 @@ class Home extends Component {
         <Row>
           <Col l={3} className='grid-menu'>
             <Categories />
+            <Ranking />
           </Col>
 
           <Col l={9} className='grid-all-movie'>
