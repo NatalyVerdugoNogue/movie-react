@@ -1,17 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import filmPick from '../../img/backFilm.jpg'
-import userIcon from '../../img/userIcon.png'
+import filmPick from '../../img/backFilm.jpg';
+import userIcon from '../../img/userIcon.png';
 
 import Categories from '../../components/Categories';
 import Ranking from '../../components/Ranking';
 
 import './style.css';
 
-import { SideNav, SideNavItem, Icon } from 'react-materialize'
+import { SideNav, SideNavItem, Icon } from 'react-materialize';
 
 const SideNavCom = () => (
-
 
   <SideNav>
 

@@ -69,6 +69,7 @@
 .i-side {
   color: #fff;
   padding: 10px 50px;
+  font-size: 36px !important
 }
 
 .select-wrapper span.caret {

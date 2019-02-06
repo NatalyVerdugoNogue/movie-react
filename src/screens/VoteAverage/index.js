@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Row, Col, Preloader } from 'react-materialize'
+import { Row, Col, Preloader } from 'react-materialize';
 
 import Film from '../../components/Film';
 import SideNavCom from '../../components/SideNavCom';
@@ -16,19 +16,15 @@ class VoteAverage extends Component {
       errorValue: false,
       favoriteFilms: [],
     };
-
-  }
+  };
 
   saveFavoriteFilms = (film) => {
-
-    this.state.favoriteFilms.push(film)
+    this.state.favoriteFilms.push(film);
     this.setState(this.state.favoriteFilms);
-    localStorage.setItem("MovieReact-favoriteFilms", JSON.stringify(this.state.favoriteFilms))
-
-  }
+    localStorage.setItem("MovieReact-favoriteFilms", JSON.stringify(this.state.favoriteFilms));
+  };
 
   async getMovieByVoteAverage() {
-
     this.valueGte = this.props.match.params.valueGte;
     this.valueLte = this.props.match.params.valueLte;
 
@@ -42,70 +38,69 @@ class VoteAverage extends Component {
       const movieValue = responseJsonValue.results.slice(0, 18);
       this.setState({ movieValue, loadingValue: false, errorValue: false });
     } catch (e) {
-      this.setState({ loadingValue: false, errorValue: true })
-    }
-
-  }
+      this.setState({ loadingValue: false, errorValue: true });
+    };
+  };
 
   componentDidMount() {
-
     const favoriteFilms = localStorage.getItem("MovieReact-favoriteFilms");
     if (favoriteFilms) {
       this.setState({ favoriteFilms: JSON.parse(favoriteFilms) });
-    }
-
+    };
     this.getMovieByVoteAverage();
-
   }
 
   componentDidUpdate(prevProps) {
-
-    if (this.props.match.params.valueGte !== prevProps.match.params.valueGte || this.props.match.params.valueLte !== prevProps.match.params.valueLte) {
+    if (this.props.match.params.valueGte !== prevProps.match.params.valueGte ||
+      this.props.match.params.valueLte !== prevProps.match.params.valueLte) {
       this.getMovieByVoteAverage();
-    }
-
-  }
-
+    };
+  };
 
   render() {
 
     const { movieValue, loadingValue, errorValue } = this.state;
 
-
     return (
 
       <div className="dataFilm">
+
         <Row>
           <Col l={3} className='grid-menu'>
             <SideNavCom />
           </Col>
-
           <Col l={9} className='grid-all-movie'>
+
             <Row>
               <Col l={12} className='fix-title'>
+
                 <Row className="fix-row">
                   <Col l={2}>
                     <p className='font-card-fix'>RANKING</p></Col>
                   <Col l={10}>
                     <p className='font-card-fix'>{this.valueGte}-{this.valueLte}</p></Col>
                 </Row>
+
               </Col>
+
               <Row className='fix-card'>
                 {!loadingValue && movieValue.map(film => <Film film={film} saveFavoriteFilms={this.saveFavoriteFilms} />)}
               </Row>
+
               {loadingValue &&
                 <Col l={4} className='fix-card'>
                   <Preloader flashing />
-                </Col>
-              }
-              {!loadingValue && !errorValue && !movieValue.length && <h2 className='font-card-warning'>No hay información disponible</h2>}
+                </Col>}
+              {!loadingValue && !errorValue && !movieValue.length &&
+                <h2 className='font-card-warning'>No hay información disponible</h2>}
               {!loadingValue && errorValue && <h2 className='font-card-warning'>Ocurrio un error</h2>}
             </Row>
+
           </Col>
 
         </Row>
-      </div>
 
+      </div>
     );
   };
 };

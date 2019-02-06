@@ -1,6 +1,7 @@
 import React from 'react';
 
-import { Dropdown, NavItem, Button, Icon } from 'react-materialize'
+import { Dropdown, NavItem, Button, Icon } from 'react-materialize';
+
 import { Link } from 'react-router-dom';
 
 const genres = [
@@ -23,16 +24,23 @@ const genres = [
   { "id": 53, "name": "Suspense" },
   { "id": 10752, "name": "Bélica" },
   { "id": 37, "name": "Western" }
-]
+];
 
 const Categories = () => (
   <Dropdown
     trigger={
-      <Button>Categorias<Icon right>arrow_drop_down</Icon></Button>
-    }>
-
-    {genres.map(genres => <Link key={genres.id} to={`/genres/${genres.id}/${genres.name}`}> <NavItem> {genres.name} </NavItem> </Link>)}
-
+      <Button>
+        Categorias
+        <Icon right>
+          arrow_drop_down
+        </Icon>
+      </Button>}>
+    {genres.map(genres =>
+      <Link key={genres.id} to={`/genres/${genres.id}/${genres.name}`}>
+        <NavItem> {genres.name}
+        </NavItem>
+      </Link>)}
   </Dropdown>
-)
-export default Categories
+);
+
+export default Categories;

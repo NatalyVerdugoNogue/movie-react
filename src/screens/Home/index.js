@@ -6,8 +6,7 @@ import SideNavCom from '../../components/SideNavCom';
 
 import './style.css';
 
-
-import { Row, Col, Preloader } from 'react-materialize'
+import { Row, Col, Preloader } from 'react-materialize';
 
 
 const urlPopularity = `https://api.themoviedb.org/3/discover/movie?api_key=bdf4d6ef2e610465506b8a14ec2b87ac&language=es-CL&sort_by=popularity.desc&include_adult=false&include_video=false&page=1`;
@@ -26,16 +25,13 @@ class Home extends Component {
       errorRelaseDate: false,
       favoriteFilms: [],
     };
-  }
-
+  };
 
   async componentDidMount() {
-
     const favoriteFilms = localStorage.getItem("MovieReact-favoriteFilms");
     if (favoriteFilms) {
       this.setState({ favoriteFilms: JSON.parse(favoriteFilms) });
-    }
-
+    };
     try {
       this.setState({ loadingPopularity: true, errorPopularity: false });
       const responsePopularity = await fetch(urlPopularity);
@@ -44,8 +40,7 @@ class Home extends Component {
       this.setState({ moviePopularity, loadingPopularity: false, errorPopularity: false });
     } catch (e) {
       this.setState({ loadingPopularity: false, errorPopularity: true })
-    }
-
+    };
     try {
       this.setState({ loadingRelaseDate: true, errorRelaseDate: false });
       const responseRelaseDate = await fetch(urlRelaseDate);
@@ -54,15 +49,23 @@ class Home extends Component {
       this.setState({ movieRelaseDate, loadingRelaseDate: false, errorRelaseDate: false });
     } catch (e) {
       this.setState({ loadingRelaseDate: false, errorRelaseDate: true })
-    }
-
-  }
+    };
+  };
 
   saveFavoriteFilms = (film) => {
-    this.state.favoriteFilms.push(film)
+    this.state.favoriteFilms.push(film);
     this.setState(this.state.favoriteFilms);
-    localStorage.setItem("MovieReact-favoriteFilms", JSON.stringify(this.state.favoriteFilms))
-  }
+    localStorage.setItem("MovieReact-favoriteFilms", JSON.stringify(this.state.favoriteFilms));
+  };
+
+  deleteFavoriteFilms = (fav) => {
+    const index = this.state.favoriteFilms.indexOf(fav);
+    if (index > -1) {
+      this.state.favoriteFilms.splice(index, 1);
+      this.setState(this.state.favoriteFilms);
+      localStorage.setItem("MovieReact-favoriteFilms", JSON.stringify(this.state.favoriteFilms));
+    };
+  };
 
   render() {
 
@@ -78,53 +81,52 @@ class Home extends Component {
           <Col l={3} className='grid-menu'>
             <SideNavCom />
           </Col>
-
           <Col l={9} className='grid-all-movie'>
 
             <Row>
               <p className='font-card-fix'>Las más populares</p>
-              {!loadingPopularity && moviePopularity.map(film => <Film film={film} saveFavoriteFilms={this.saveFavoriteFilms} />)}
+              {!loadingPopularity && moviePopularity.map(film =>
+                <Film film={film} saveFavoriteFilms={this.saveFavoriteFilms} />)}
               {loadingPopularity &&
                 <Col l={4}>
                   <Preloader flashing />
-                </Col>
-              }
-              {!loadingPopularity && !errorPopularity && !moviePopularity.length && <h2 className='font-card-warning'>No hay información disponible</h2>}
+                </Col>}
+              {!loadingPopularity && !errorPopularity && !moviePopularity.length &&
+                <h2 className='font-card-warning'>No hay información disponible</h2>}
               {!loadingPopularity && errorPopularity && <h2 className='font-card-warning'>Ocurrio un error</h2>}
             </Row>
 
             <Row>
               <p className='font-card-fix'>Nuevo en cartelera</p>
-              {!loadingRelaseDate && movieRelaseDate.map(film => <Film film={film} saveFavoriteFilms={this.saveFavoriteFilms} />)}
+              {!loadingRelaseDate && movieRelaseDate.map(film =>
+                <Film film={film} saveFavoriteFilms={this.saveFavoriteFilms} />)}
               {loadingRelaseDate &&
                 <Col l={4}>
                   <Preloader flashing />
-                </Col>
-              }
-              {!loadingRelaseDate && !errorRelaseDate && !movieRelaseDate.length && <h2 className='font-card-warning'>No hay información disponible</h2>}
+                </Col>}
+              {!loadingRelaseDate && !errorRelaseDate && !movieRelaseDate.length &&
+                <h2 className='font-card-warning'>No hay información disponible</h2>}
               {!loadingRelaseDate && errorRelaseDate && <h2 className='font-card-warning'>Ocurrio un error</h2>}
             </Row>
 
             <Row>
               <p className='font-card-fix'>Favoritas</p>
-              {favoriteFilms.slice(0, 6).map(fav => <Favorite fav={fav} />)}
+              {favoriteFilms.slice(0, 6).map(fav =>
+                <Favorite fav={fav} deleteFavoriteFilms={this.deleteFavoriteFilms} />)}
               {loadingRelaseDate &&
                 <Col l={4}>
                   <Preloader flashing />
-                </Col>
-              }
+                </Col>}
               {!favoriteFilms.length && <h2 className='font-card-warning'>No hay películas favoritas</h2>}
               {!favoriteFilms && <h2 className='font-card-warning'>Ocurrio un error</h2>}
             </Row>
 
-
           </Col>
 
         </Row>
-
       </div>
     );
-  }
-}
+  };
+};
 
 export default Home;

@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import DataFilm from '../../components/DataFilm';
 import SideNavCom from '../../components/SideNavCom';
 
-import { Row, Col, Preloader } from 'react-materialize'
+import { Row, Col, Preloader } from 'react-materialize';
 
 
 class Single extends Component {
@@ -15,15 +15,11 @@ class Single extends Component {
       errorById: false,
       id: ''
     };
-
-  }
+  };
 
   async componentDidMount() {
-
     this.id = this.props.match.params.filmId;
-
     const urlById = `https://api.themoviedb.org/3/movie/${this.id}?api_key=bdf4d6ef2e610465506b8a14ec2b87ac&language=es-CL`;
-
     try {
       this.setState({ loadingById: true, errorById: false });
       const responseById = await fetch(urlById);
@@ -31,14 +27,14 @@ class Single extends Component {
       const movieById = responseJsonById;
       this.setState({ movieById, loadingById: false, errorById: false });
     } catch (e) {
-      this.setState({ loadingById: false, errorById: true })
-    }
-
-  }
+      this.setState({ loadingById: false, errorById: true });
+    };
+  };
 
   render() {
 
     const { movieById, loadingById, errorById } = this.state;
+
     return (<div className="dataFilm">
 
       <Row>
@@ -47,6 +43,7 @@ class Single extends Component {
         </Col>
 
         <Col l={9} className='grid-all-movie'>
+
           <Row>
             {!loadingById && <DataFilm dataFilm={movieById} />}
             {loadingById &&
@@ -63,6 +60,7 @@ class Single extends Component {
 
     </div>
     );
-  }
-}
+  };
+};
+
 export default Single;
