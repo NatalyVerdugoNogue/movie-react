@@ -36,9 +36,17 @@ class AllFavorite extends Component {
           </Col>
           <Col l={9} className='grid-all-movie'>
             <Row>
-              <h4 className='font-card'>Favoritas</h4>
-              {favoriteFilms.map(fav => <Favorite fav={fav} saveFavoriteFilms={this.saveFavoriteFilms} />)}
+              <Col l={12} className='fix-title'>
+                <Row className="fix-row">
+                  <Col l={2}>
+                    <p className='font-card-fix'>FAVORITAS</p>
+                  </Col>
 
+                </Row>
+              </Col>
+              <Row className='fix-card'>
+                {favoriteFilms.map(fav => <Favorite fav={fav} saveFavoriteFilms={this.saveFavoriteFilms} />)}
+              </Row>
             </Row>
           </Col>
         </Row>

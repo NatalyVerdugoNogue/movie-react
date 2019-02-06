@@ -11,17 +11,22 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-
-
-.card.small .card-image {
-  max-height: 100%
+.fix-title {
+  position: fixed;
+  z-index: 999;
+  background-color: #0e151c;
 }
 
-.card {
-  box-shadow: none;
+.fix-card {
+  padding-top: 67.77px;
 }
 
-.card-movie {
-  padding: 5px;
+.font-card-fix {
+  font-size: 30px;
+  color: #dadbdd;
+  margin: 20px 0;
 }
 
+.fix-row {
+  margin: 0
+}

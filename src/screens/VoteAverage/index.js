@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { Row, Col, Preloader} from 'react-materialize'
+import { Row, Col, Preloader } from 'react-materialize'
 
 import Film from '../../components/Film';
 import SideNavCom from '../../components/SideNavCom';
@@ -77,15 +77,24 @@ class VoteAverage extends Component {
       <div className="dataFilm">
         <Row>
           <Col l={3} className='grid-menu'>
-          <SideNavCom />
+            <SideNavCom />
           </Col>
 
           <Col l={9} className='grid-all-movie'>
             <Row>
-              <h4 className='font-card'>{this.valueGte}-{this.valueLte}</h4>
-              {!loadingValue && movieValue.map(film => <Film film={film} saveFavoriteFilms={this.saveFavoriteFilms} />)}
+              <Col l={12} className='fix-title'>
+                <Row className="fix-row">
+                  <Col l={2}>
+                    <p className='font-card-fix'>RANKING</p></Col>
+                  <Col l={10}>
+                    <p className='font-card-fix'>{this.valueGte}-{this.valueLte}</p></Col>
+                </Row>
+              </Col>
+              <Row className='fix-card'>
+                {!loadingValue && movieValue.map(film => <Film film={film} saveFavoriteFilms={this.saveFavoriteFilms} />)}
+              </Row>
               {loadingValue &&
-                <Col l={4}>
+                <Col l={4} className='fix-card'>
                   <Preloader flashing />
                 </Col>
               }
@@ -93,7 +102,7 @@ class VoteAverage extends Component {
               {!loadingValue && errorValue && <h2 className='font-card-warning'>Ocurrio un error</h2>}
             </Row>
           </Col>
-          
+
         </Row>
       </div>
 

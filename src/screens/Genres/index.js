@@ -79,10 +79,19 @@ class Genres extends Component {
           </Col>
           <Col l={9} className='grid-all-movie'>
             <Row>
-              <h4 className='font-card'>{this.nameGenres}</h4>
-              {!loadingGenresId && movieGenresId.map(film => <Film film={film} saveFavoriteFilms={this.saveFavoriteFilms} />)}
+              <Col l={12} className='fix-title'>
+                <Row className="fix-row">
+                  <Col l={2}>
+                    <p className='font-card-fix'>CATEGORIA</p></Col>
+                  <Col l={10}>
+                    <p className='font-card-fix'>{this.nameGenres}</p></Col>
+                </Row>
+              </Col>
+              <Row className='fix-card'>
+                {!loadingGenresId && movieGenresId.map(film => <Film film={film} saveFavoriteFilms={this.saveFavoriteFilms} />)}
+              </Row>
               {loadingGenresId &&
-                <Col l={4}>
+                <Col l={4} className='fix-card'>
                   <Preloader flashing />
                 </Col>
               }

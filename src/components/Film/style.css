@@ -1,0 +1,34 @@
+.card.small .card-image {
+  max-height: 100%
+}
+
+.card {
+  box-shadow: none;
+  margin: 0;
+}
+
+.card-movie {
+  padding: 5px;
+}
+
+.star-vote {
+  overflow: hidden;
+  padding-bottom: 20%;
+}
+
+.card .card-content {
+  padding: 10px
+}
+
+.favorite-button {
+  padding-left: 80%;
+}
+
+.icon-favorite-button {
+  color: #dadbdd;
+}
+
+.grid-card-movie {
+  padding-top: 2% !important;
+  padding-bottom: 2% !important;
+}

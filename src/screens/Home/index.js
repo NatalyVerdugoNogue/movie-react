@@ -82,7 +82,7 @@ class Home extends Component {
           <Col l={9} className='grid-all-movie'>
 
             <Row>
-              <h4 className='font-card'>Las más populares</h4>
+              <p className='font-card-fix'>Las más populares</p>
               {!loadingPopularity && moviePopularity.map(film => <Film film={film} saveFavoriteFilms={this.saveFavoriteFilms} />)}
               {loadingPopularity &&
                 <Col l={4}>
@@ -94,7 +94,7 @@ class Home extends Component {
             </Row>
 
             <Row>
-              <h4 className='font-card'>Nuevo en cartelera</h4>
+              <p className='font-card-fix'>Nuevo en cartelera</p>
               {!loadingRelaseDate && movieRelaseDate.map(film => <Film film={film} saveFavoriteFilms={this.saveFavoriteFilms} />)}
               {loadingRelaseDate &&
                 <Col l={4}>
@@ -106,7 +106,7 @@ class Home extends Component {
             </Row>
 
             <Row>
-              <h4 className='font-card'>Favoritas</h4>
+              <p className='font-card-fix'>Favoritas</p>
               {favoriteFilms.slice(0, 6).map(fav => <Favorite fav={fav} />)}
               {loadingRelaseDate &&
                 <Col l={4}>
